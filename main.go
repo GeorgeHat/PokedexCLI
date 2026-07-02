@@ -9,7 +9,7 @@ import (
 func main() {
 
 	allowedCommands := getCommands()
-
+	config := &config{empty: true}
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
@@ -27,9 +27,10 @@ func main() {
 			println("Unknown command")
 			continue
 		}
-		err := command.callback()
+
+		err := command.callback(config)
 		if err != nil {
-			fmt.Printf("Error excecuting command: %v: %v", command.name, err)
+			fmt.Printf("Error excecuting command: %v: %v\n", command.name, err)
 		}
 
 	}
