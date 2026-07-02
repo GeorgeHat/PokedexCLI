@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestCleanInput(t *testing.T) {
 	cases := []struct {
@@ -14,6 +16,10 @@ func TestCleanInput(t *testing.T) {
 		{
 			input:    "pashgoipsahgoishgoi",
 			expected: []string{"pashgoipsahgoishgoi"},
+		},
+		{
+			input:    "",
+			expected: []string{""},
 		},
 	}
 

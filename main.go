@@ -14,7 +14,10 @@ func main() {
 
 	for {
 		fmt.Print("Pokedex > ")
-		scanner.Scan()
+		if !scanner.Scan() {
+			fmt.Printf("Error reading stdin: %v\n", scanner.Err())
+			break
+		}
 
 		input := scanner.Text()
 		cleanedInput := cleanInput(input)

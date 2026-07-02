@@ -13,7 +13,9 @@ type cliCommand struct {
 }
 
 func cleanInput(text string) []string {
-
+	if text == "" {
+		return []string{""}
+	}
 	return strings.Fields(strings.ToLower(text))
 
 }
@@ -41,8 +43,8 @@ func commandExit() error {
 
 func commandHelp() error {
 	fmt.Println("Welcome to the Pokedex!")
-	fmt.Println("Usage")
-
+	fmt.Println("Usage:")
+	fmt.Println("")
 	for _, command := range getCommands() {
 		fmt.Printf("%s: %s\n", command.name, command.description)
 	}
